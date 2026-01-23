@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // 1. Import Link
 import { 
   Phone, 
   Mail, 
@@ -13,25 +14,29 @@ import {
 
 // Assets
 import Logo from '@/assets/logo.png'; 
-import FooterBg from '@/assets/footer.png'; // Import your footer background image
+import FooterBg from '@/assets/footer.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  // Helper to ensure page starts at top when navigating
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // 2. Exact same links as your Navbar
   const usefulLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#' },
-    { name: 'Rooms & Pricing', href: '#' },
-    { name: 'Gallery', href: '#' },
-    { name: 'Testimonials', href: '#' },
+    { name: 'Home',       path: '/' },
+    { name: 'About',      path: '/about' },
+    { name: 'Facilities', path: '/facilities' },
+    { name: 'Gallery',    path: '/gallery' },
+    { name: 'Our Rooms',  path: '/rooms' },
+    { name: 'Contact',    path: '/contact' },
   ];
 
-  const quickLinks = [
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'FAQs', href: '#' },
-    { name: 'Contact Us', href: '#' },
-    { name: 'Map Location', href: '#' },
+  const supportLinks = [
+    { name: 'Privacy Policy',     path: '/privacy' },
+    { name: 'Terms & Conditions', path: '/terms' },
   ];
 
   const socialLinks = [
@@ -46,17 +51,20 @@ const Footer = () => {
       className="relative w-full text-gray-300 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${FooterBg})` }}
     >
-      {/* Dark Overlay to ensure readability */}
-      <div className="absolute inset-0 bg-gray-900/30 "></div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-gray-900/95 lg:bg-gray-900/90"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
           {/* Column 1: Logo & About */}
           <div className="space-y-6">
-            <img src={Logo} alt="ALG Ladies Hostel" className="h-14 w-auto" />
+            <Link to="/" onClick={scrollToTop} className="block">
+                <img src={Logo} alt="ALG Ladies Hostel" className="h-14 w-auto object-contain" />
+            </Link>
             <p className="text-sm leading-relaxed text-gray-400">
-              ALG Ladies Hostel provides a safe, clean, and comfortable environment for students and working professionals in Peelamedu. Experience a home away from home.
+              ALooking for a safe ladies hostel in Puducherry?
+Contact ALG Ladies Hostel today to check room availability and book your stay.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
@@ -73,7 +81,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2: Useful Links */}
+          {/* Column 2: Useful Links (Navbar Links) */}
           <div>
             <h4 className="text-white font-bold text-lg mb-8 relative">
               Useful Links
@@ -82,10 +90,15 @@ const Footer = () => {
             <ul className="space-y-4">
               {usefulLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="flex items-center gap-2 hover:text-[#eab308] transition-colors group text-sm">
+                  {/* Changed from <a> to <Link> */}
+                  <Link 
+                    to={link.path} 
+                    onClick={scrollToTop}
+                    className="flex items-center gap-2 hover:text-[#eab308] transition-colors group text-sm"
+                  >
                     <ChevronRight size={14} className="text-[#eab308] group-hover:translate-x-1 transition-transform" />
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -98,12 +111,16 @@ const Footer = () => {
               <span className="absolute left-0 bottom-[-8px] w-8 h-0.5 bg-[#eab308]"></span>
             </h4>
             <ul className="space-y-4">
-              {quickLinks.map((link, index) => (
+              {supportLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="flex items-center gap-2 hover:text-[#eab308] transition-colors group text-sm">
+                  <Link 
+                    to={link.path} 
+                    onClick={scrollToTop}
+                    className="flex items-center gap-2 hover:text-[#eab308] transition-colors group text-sm"
+                  >
                     <ChevronRight size={14} className="text-[#eab308] group-hover:translate-x-1 transition-transform" />
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -117,27 +134,29 @@ const Footer = () => {
             </h4>
             <div className="space-y-5">
               <div className="flex items-start gap-4">
-                <div className="bg-[#eab308]/10 p-2 rounded-lg">
+                <div className="bg-[#eab308]/10 p-2 rounded-lg shrink-0">
                   <MapPin className="text-[#eab308]" size={18} />
                 </div>
                 <p className="text-sm leading-snug">
-                  73A, Lakshmipuram 6th St, Peelamedu, Coimbatore, TN 641004
+                  No: 73, 75, Amman Koil Street,
+ Orleanpet, Puducherry – 605005
+
                 </p>
               </div>
               <div className="flex items-center gap-4">
-                <div className="bg-[#eab308]/10 p-2 rounded-lg">
+                <div className="bg-[#eab308]/10 p-2 rounded-lg shrink-0">
                   <Phone className="text-[#eab308]" size={18} />
                 </div>
-                <a href="tel:+919876543210" className="text-sm hover:text-white transition-colors">
-                  +91 98765 43210
+                <a href="tel:+917305010332" className="text-sm hover:text-white transition-colors">
+                  +91 98941 69241
                 </a>
               </div>
               <div className="flex items-center gap-4">
-                <div className="bg-[#eab308]/10 p-2 rounded-lg">
+                <div className="bg-[#eab308]/10 p-2 rounded-lg shrink-0">
                   <Mail className="text-[#eab308]" size={18} />
                 </div>
-                <a href="mailto:info@ALGhostel.com" className="text-sm hover:text-white transition-colors">
-                  info@ALGhostel.com
+                <a href="mailto:ALGhostels@gmail.com" className="text-sm hover:text-white transition-colors">
+                  ALGhostels@gmail.com
                 </a>
               </div>
             </div>
@@ -148,9 +167,8 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[11px] tracking-widest text-white">
-            © {currentYear} <span className="text-yellow-500"><a href="https://bmtechx.in" target='_blank'>BMTechx.in</a></span> All rights reserved.
+            © {currentYear} <span className="text-yellow-500 font-bold">ALG Ladies Hostel</span>. All rights reserved.
           </p>
-          
         </div>
       </div>
     </footer>

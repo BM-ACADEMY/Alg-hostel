@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, BedDouble, UtensilsCrossed, Wifi } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const MotionLink = motion(Link);
 
 const facilitiesData = [
   {
@@ -88,14 +91,16 @@ const HostelFacilities = () => {
             </motion.div>
           ))}
         </div>
+        
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-12 bg-yellow-500 text-white font-semibold py-3 px-8 rounded-md shadow-md hover:bg-yellow-600 transition duration-300"
-        >
-          EXPLORE MORE FACILITIES
-        </motion.button>
+        <MotionLink
+  to="/facilities"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="mt-12 inline-block bg-yellow-500 text-white font-semibold py-3 px-8 rounded-md shadow-md hover:bg-yellow-600 transition duration-300"
+>
+  EXPLORE MORE FACILITIES
+</MotionLink>
       </div>
     </section>
   );

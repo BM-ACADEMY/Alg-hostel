@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, MapPin, ShieldCheck, Utensils, Wifi, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AboutSection = () => {
   return (
@@ -43,13 +44,13 @@ const AboutSection = () => {
             </div>
 
             {/* CTA Button */}
-            <a 
-              href="/about" 
+            <Link 
+              to="/about" 
               className="inline-flex items-center justify-center gap-2 bg-teal-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-teal-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               Discover More
               <ArrowRight size={20} />
-            </a>
+            </Link>
           </div>
 
           {/* --- RIGHT COLUMN: IMAGE COMPOSITION --- */}

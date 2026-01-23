@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const HomeSection = () => {
   return (
@@ -54,19 +55,19 @@ const HomeSection = () => {
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4">
             {/* Button 1: Enquire Now (Primary Style based on image) */}
-            <button className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded shadow-md transition-all duration-300 uppercase tracking-wide">
-              Enquire Now
-            </button>
+            <Link to="/contact">
+  <button className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded shadow-md transition-all duration-300 uppercase tracking-wide">
+    Enquire Now
+  </button>
+</Link>
 
             {/* Button 2: Call Now */}
-            <button className="px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded shadow-md transition-all duration-300 uppercase tracking-wide">
-              Call Now
-            </button>
+          <a href="tel:9487509935">
+  <button className="px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded shadow-md transition-all duration-300 uppercase tracking-wide">
+    Call Now
+  </button>
+</a>
 
-            {/* Button 3: Book Your Stay */}
-            <button className="px-8 py-3 border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-50 font-semibold rounded shadow-sm transition-all duration-300 uppercase tracking-wide">
-              Book Your Stay
-            </button>
           </div>
 
         </div>
