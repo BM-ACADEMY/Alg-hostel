@@ -13,6 +13,8 @@ import {
   HeartHandshake,
 } from "lucide-react";
 
+ import { Helmet } from 'react-helmet';
+
 const facilitiesData = [
   {
     id: 1,
@@ -222,6 +224,13 @@ const facilitiesData = [
 const FacilitiesPage = () => {
   return (
     <div className="bg-white min-h-screen font-sans">
+
+      <Helmet>
+        <title>Facilities | ALG Ladies Hostel Puducherry</title>
+        <meta name="description" content="Explore our premium hostel facilities including 24/7 security, WiFi, home-style food, and housekeeping services." />
+        <link rel="canonical" href="https://algladieshostel.com/facilities" />
+      </Helmet>
+      
       {/* --- HERO BANNER --- */}
       <section className="relative h-[300px] md:h-[450px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">

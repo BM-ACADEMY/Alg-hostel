@@ -2,22 +2,53 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Phone, Mail, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import { Helmet } from 'react-helmet-async'; // Ensure using async to prevent crashes
 
 const ContactSection = () => {
-  const [phone, setPhone] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
 
-  // Function to handle phone input and restrict to 10 digits
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const handlePhoneChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+    const value = e.target.value.replace(/\D/g, ''); 
     if (value.length <= 10) {
-      setPhone(value);
+      setFormData(prev => ({ ...prev, phone: value }));
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, phone, email, message } = formData;
+    const whatsappMessage = 
+      `*New Enquiry from Website* %0A%0A` +
+      `*Name:* ${name} %0A` +
+      `*Phone:* ${phone} %0A` +
+      `*Email:* ${email} %0A` +
+      `*Message:* ${message}`;
+    
+    const whatsappUrl = `https://wa.me/919894169241?text=${whatsappMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 relative z-10">
-        <section className="relative h-[300px] md:h-[450px] flex items-center justify-center overflow-hidden">
+    // 1. Removed global padding (px-4...) so image touches edges
+    <div className="bg-white min-h-screen relative z-10 font-sans">
+      <Helmet>
+        <title>Contact Us | ALG Ladies Hostel Puducherry</title>
+        <meta name="description" content="Contact ALG Ladies Hostel to book your stay or inquire about rates and facilities." />
+        <link rel="canonical" href="https://algladieshostel.com/contact" />
+      </Helmet>
+
+      {/* 2. Hero Image Section - Now spans full width */}
+      <section className="relative h-[300px] md:h-[450px] flex items-center justify-center overflow-hidden w-full">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=2070&auto=format&fit=crop"
@@ -43,15 +74,15 @@ const ContactSection = () => {
         </div>
       </section>
 
-
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 pt-25 lg:grid-cols-2 gap-12 items-start">
+      {/* 3. Content Section - Added padding here instead */}
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           
           {/* Left Side: Enquiry Form */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }} // Fix: Triggers when 20% visible
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
@@ -60,8 +91,9 @@ const ContactSection = () => {
               <h2 className="text-5xl font-bold text-gray-900 tracking-tight">Enquire Now</h2>
             </div>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
                 {/* Name */}
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-gray-700 font-medium">
@@ -69,6 +101,9 @@ const ContactSection = () => {
                   </label>
                   <input 
                     type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Enter your name"
                     required
                     className="w-full p-3 border border-gray-200 rounded-sm focus:outline-none focus:border-[#d4a017] transition-colors"
@@ -82,16 +117,14 @@ const ContactSection = () => {
                   </label>
                   <input 
                     type="tel" 
-                    value={phone}
+                    name="phone"
+                    value={formData.phone}
                     onChange={handlePhoneChange}
                     placeholder="10-digit mobile number"
                     pattern="[0-9]{10}"
                     required
                     className="w-full p-3 border border-gray-200 rounded-sm focus:outline-none focus:border-[#d4a017] transition-colors"
                   />
-                  {phone.length > 0 && phone.length < 10 && (
-                    <p className="text-xs text-red-500 mt-1">Please enter a valid 10-digit number.</p>
-                  )}
                 </div>
 
                 {/* Email */}
@@ -101,6 +134,9 @@ const ContactSection = () => {
                   </label>
                   <input 
                     type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Email Address"
                     required
                     className="w-full p-3 border border-gray-200 rounded-sm focus:outline-none focus:border-[#d4a017] transition-colors"
@@ -113,6 +149,9 @@ const ContactSection = () => {
                     <MessageSquare size={18} className="text-gray-400" /> Message
                   </label>
                   <textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="How can we help you?"
                     rows="4"
                     className="w-full p-3 border border-gray-200 rounded-sm focus:outline-none focus:border-[#d4a017] transition-colors resize-none"
@@ -127,7 +166,7 @@ const ContactSection = () => {
                 type="submit"
                 className="w-full bg-[#eab308] hover:bg-[#d4a017] text-white font-bold py-4 px-6 transition-colors tracking-widest uppercase text-sm shadow-md"
               >
-                Enquire Now
+                Send via WhatsApp
               </motion.button>
             </form>
           </motion.div>
@@ -136,14 +175,13 @@ const ContactSection = () => {
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }} // Fix: Triggers earlier
+            viewport={{ once: true, amount: 0.2 }} 
             transition={{ duration: 0.5 }}
             className="w-full h-[400px] lg:h-full min-h-[500px] shadow-lg rounded-sm overflow-hidden border border-gray-100 bg-gray-100"
           >
-            {/* Fix: Added valid Puducherry Map URL */}
-            <iframe
+             <iframe
               title="ALG Ladies Hostel Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.275463728639!2d79.8105!3d11.9337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a53616ec4851859%3A0x6280064f2e9643d9!2sPuducherry!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.632412411086!2d79.81102568424782!3d11.930649806687143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a536182644dc2bb%3A0xcf6547345ece286c!2sALG%20Ladies%20Hostel!5e0!3m2!1sen!2sin!4v1770030945792!5m2!1sen!2sin" 
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -155,7 +193,7 @@ const ContactSection = () => {
 
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

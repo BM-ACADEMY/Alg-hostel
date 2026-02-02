@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+ import { Helmet } from 'react-helmet';
 
 const GalleryPage = () => {
   // Change state to a number to track how many images to show
@@ -40,6 +41,13 @@ const GalleryPage = () => {
 
   return (
     <div className="bg-white min-h-screen">
+
+      <Helmet>
+        <title>Photo Gallery | ALG Ladies Hostel Puducherry</title>
+        <meta name="description" content="Take a look at ALG Ladies Hostel living spaces, rooms, and facilities." />
+        <link rel="canonical" href="https://algladieshostel.com/gallery" />
+      </Helmet>
+
       {/* Header Section */}
       <section className="relative h-[300px] md:h-[450px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">

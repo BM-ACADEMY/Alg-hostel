@@ -38,19 +38,19 @@ const HomeSection = () => {
           </h3>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
             ALG Ladies Hostel
-          </h1>
+          </h2>
 
           {/* Body Content - Exact Text Provided */}
           <div className="space-y-4 text-gray-600 text-lg leading-relaxed font-light">
-            <p>
-              ALG Ladies Hostel is a safe, comfortable, and affordable ladies hostel in Orleanpet, Puducherry, ideal for students and working women. Located in a peaceful residential area, our hostel offers a secure living environment with modern amenities and homely care.
-            </p>
-            <p>
-              With easy access to colleges, workplaces, and public transport, ALG Ladies Hostel ensures convenience, comfort, and safety for every resident. We focus on cleanliness, hygiene, and security to provide a worry-free stay.
-            </p>
-          </div>
+  <p>
+    ALG Ladies Hostel offers safe, comfortable, and affordable accommodation for women in Puducherry. Located in a peaceful residential area, our hostel offers a secure living environment with modern amenities and homely care.
+  </p>
+  <p>
+    With easy access to colleges, workplaces, and public transport, ALG Ladies Hostel ensures convenience, comfort, and safety for every resident. We focus on cleanliness, hygiene, and security to provide a worry-free stay.
+  </p>
+</div>
 
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4">
@@ -62,7 +62,7 @@ const HomeSection = () => {
 </Link>
 
             {/* Button 2: Call Now */}
-          <a href="tel:9487509935">
+          <a href="tel:9894169241">
   <button className="px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded shadow-md transition-all duration-300 uppercase tracking-wide">
     Call Now
   </button>

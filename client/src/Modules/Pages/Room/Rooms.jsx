@@ -18,6 +18,7 @@ import {
 import single from "@/assets/single.webp"
 import Double from "@/assets/double.webp"
 import Third from "@/assets/third.webp"
+ import { Helmet } from 'react-helmet';
 
 const RoomsPage = () => {
   // Updated data to match the text in your image
@@ -63,6 +64,12 @@ const RoomsPage = () => {
 
   return (
     <div className="bg-white min-h-screen font-sans">
+
+      <Helmet>
+        <title>Our Rooms | ALG Ladies Hostel Puducherry</title>
+        <meta name="description" content="View our room options: Single, Two Sharing, and Four Sharing rooms available at ALG Ladies Hostel." />
+        <link rel="canonical" href="https://algladieshostel.com/rooms" />
+      </Helmet>
       
       {/* Header Section */}
       <section className="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden">

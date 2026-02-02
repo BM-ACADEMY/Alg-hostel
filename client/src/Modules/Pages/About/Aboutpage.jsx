@@ -12,6 +12,7 @@ import {
   Clock
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+ import { Helmet } from 'react-helmet';
 
 
 const AboutPage = () => {
@@ -30,6 +31,7 @@ const AboutPage = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      
 
         <section className="relative h-[300px] md:h-[450px] flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 z-0">
@@ -42,13 +44,13 @@ const AboutPage = () => {
               </div>
       
               <div className="relative z-10 text-center text-white pt-10 px-4">
-                <motion.h1
+                <motion.h2
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="text-4xl md:text-6xl font-bold mb-4"
                 >
                   About
-                </motion.h1>
+                </motion.h2>
                 <nav className="flex items-center justify-center gap-2 text-sm font-medium tracking-wide">
                   <Link to="/" className="hover:text-yellow-400 transition-colors uppercase">Home</Link>
                   <span className="opacity-50">/</span>

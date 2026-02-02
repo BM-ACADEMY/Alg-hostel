@@ -111,12 +111,12 @@ const Home = () => {
                 {slides[index].tag}
               </motion.span> */}
               
-              <motion.h2 
+              <motion.h1 
                 variants={itemVariants}
                 className="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tighter mb-6"
               >
                 {slides[index].title}
-              </motion.h2>
+              </motion.h1>
               
               <motion.p 
                 variants={itemVariants}

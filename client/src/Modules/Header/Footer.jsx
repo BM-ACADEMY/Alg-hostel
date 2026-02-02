@@ -40,10 +40,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <Facebook size={18} />, href: '#', label: 'Facebook' },
-    { icon: <Instagram size={18} />, href: '#', label: 'Instagram' },
-    { icon: <Twitter size={18} />, href: '#', label: 'Twitter' },
-    { icon: <Linkedin size={18} />, href: '#', label: 'Linkedin' },
+    { icon: <Facebook size={18} />, href: 'https://www.facebook.com/profile.php?id=61556977596017',  label: 'Facebook' },
+    { icon: <Instagram size={18} />, href: 'https://www.instagram.com/algladieshostel_?igsh=NW5hbGxtYzcybHJk', label: 'Instagram' },
   ];
 
   return (
@@ -63,22 +61,8 @@ const Footer = () => {
                 <img src={Logo} alt="ALG Ladies Hostel" className="h-14 w-auto object-contain" />
             </Link>
             <p className="text-sm leading-relaxed text-gray-400">
-              ALooking for a safe ladies hostel in Puducherry?
-Contact ALG Ladies Hostel today to check room availability and book your stay.
+               Change this - ALG Ladies Hostel offers safe, comfortable, and affordable accommodation for women in Puducherry.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  whileHover={{ y: -3, backgroundColor: '#eab308', color: '#111827' }}
-                  className="bg-white/10 p-2.5 rounded-full transition-all duration-300"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
           </div>
 
           {/* Column 2: Useful Links (Navbar Links) */}
@@ -105,29 +89,32 @@ Contact ALG Ladies Hostel today to check room availability and book your stay.
           </div>
 
           {/* Column 3: Support */}
-          <div>
-            <h4 className="text-white font-bold text-lg mb-8 relative">
-              Support
-              <span className="absolute left-0 bottom-[-8px] w-8 h-0.5 bg-[#eab308]"></span>
-            </h4>
-            <ul className="space-y-4">
-              {supportLinks.map((link, index) => (
-                <li key={index}>
-                  <Link 
-                    to={link.path} 
-                    onClick={scrollToTop}
-                    className="flex items-center gap-2 hover:text-[#eab308] transition-colors group text-sm"
-                  >
-                    <ChevronRight size={14} className="text-[#eab308] group-hover:translate-x-1 transition-transform" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                <div>
+                 <h4 className="text-white font-bold text-lg mb-6 relative">
+                  Follow Us
+                  <span className="absolute left-0 bottom-[-8px] w-8 h-0.5 bg-[#eab308]"></span>
+                </h4>
+                <div className="flex flex-col gap-4">
+                    {socialLinks.map((social, index) => (
+                        <a 
+                            key={index}
+                            href={social.href}
+                            target='_blank' 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 group w-fit"
+                        >
+                             <div className="bg-white/10 p-2 rounded-lg group-hover:bg-[#eab308] group-hover:text-black transition-all duration-300">
+                                {social.icon}
+                             </div>
+                             <span className="text-sm text-gray-400 group-hover:text-[#eab308] transition-colors">
+                                {social.label}
+                             </span>
+                        </a>
+                    ))}
+                </div>
+            </div>
 
-          {/* Column 4: Contact Info */}
-          <div className="space-y-6">
+         <div className="space-y-6">
             <h4 className="text-white font-bold text-lg mb-8 relative">
               Contact Us
               <span className="absolute left-0 bottom-[-8px] w-8 h-0.5 bg-[#eab308]"></span>
@@ -138,16 +125,14 @@ Contact ALG Ladies Hostel today to check room availability and book your stay.
                   <MapPin className="text-[#eab308]" size={18} />
                 </div>
                 <p className="text-sm leading-snug">
-                  No: 73, 75, Amman Koil Street,
- Orleanpet, Puducherry – 605005
-
+                  No: 73, 75, Amman Koil Street,<br/> Orleanpet, Puducherry – 605 005.
                 </p>
               </div>
               <div className="flex items-center gap-4">
                 <div className="bg-[#eab308]/10 p-2 rounded-lg shrink-0">
                   <Phone className="text-[#eab308]" size={18} />
                 </div>
-                <a href="tel:+917305010332" className="text-sm hover:text-white transition-colors">
+                <a href="tel:+919894169241" className="text-sm hover:text-white transition-colors">
                   +91 98941 69241
                 </a>
               </div>
@@ -155,8 +140,8 @@ Contact ALG Ladies Hostel today to check room availability and book your stay.
                 <div className="bg-[#eab308]/10 p-2 rounded-lg shrink-0">
                   <Mail className="text-[#eab308]" size={18} />
                 </div>
-                <a href="mailto:ALGhostels@gmail.com" className="text-sm hover:text-white transition-colors">
-                  ALGhostels@gmail.com
+                <a href="mailto:algladieshostel1@gmail.com" className="text-sm hover:text-white transition-colors">
+                  algladieshostel1@gmail.com
                 </a>
               </div>
             </div>
@@ -166,8 +151,8 @@ Contact ALG Ladies Hostel today to check room availability and book your stay.
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[11px] tracking-widest text-white">
-            © {currentYear} <span className="text-yellow-500 font-bold">ALG Ladies Hostel</span>. All rights reserved.
+          <p className="text-[14px] tracking-widest text-white">
+            © {currentYear} <span className="text-yellow-500 font-bold"><a href="https://bmtechx.in" target='_blank'>Bmtechx.in</a></span>. All rights reserved.
           </p>
         </div>
       </div>

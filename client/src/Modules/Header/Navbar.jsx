@@ -118,19 +118,19 @@ const Navbar = () => {
               exit="hidden"
               className="bg-[#004d5a] text-white px-6 hidden md:flex justify-between items-center text-[13px] font-medium border-b border-white/5 overflow-hidden origin-top"
             >
-              <div className="flex gap-6 h-full items-center">
-                <span className="flex items-center gap-2 hover:text-yellow-400 transition-colors cursor-pointer">
-                  <Mail size={14} className="text-yellow-400" /> ALGhostels@gmail.com
-                </span>
-                <span className="flex items-center gap-2 hover:text-yellow-400 transition-colors cursor-pointer">
-                  <Phone size={14} className="text-yellow-400" /> +91 98941 69241
-                </span>
-              </div>
-              <div className="flex gap-4 h-full items-center">
+             <div className="flex gap-6 h-full items-center">
+  <span className="flex items-center gap-2 hover:text-yellow-400 transition-colors cursor-pointer">
+    <Mail size={14} className="text-yellow-400" /> algladieshostel1@gmail.com
+  </span>
+  <span className="flex items-center gap-2 hover:text-yellow-400 transition-colors cursor-pointer">
+    <Phone size={14} className="text-yellow-400" /> +91 98941 69241
+  </span>
+</div>
+              {/* <div className="flex gap-4 h-full items-center">
                 <Facebook size={16} className="hover:text-yellow-400 cursor-pointer transition-colors" />
                 <Instagram size={16} className="hover:text-yellow-400 cursor-pointer transition-colors" />
                 <Youtube size={16} className="hover:text-yellow-400 cursor-pointer transition-colors" />
-              </div>
+              </div> */}
             </motion.div>
           )}
         </AnimatePresence>
