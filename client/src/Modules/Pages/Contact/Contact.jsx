@@ -59,13 +59,13 @@ const ContactSection = () => {
         </div>
 
         <div className="relative z-10 text-center text-white pt-10 px-4">
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-bold mb-4"
           >
             Contact
-          </motion.h1>
+          </motion.h2>
           <nav className="flex items-center justify-center gap-2 text-sm font-medium tracking-wide">
             <Link to="/" className="hover:text-yellow-400 transition-colors uppercase">Home</Link>
             <span className="opacity-50">/</span>
