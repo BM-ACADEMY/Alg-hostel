@@ -126,12 +126,12 @@ const Home = () => {
               </motion.p>
               
               <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-                <button className="bg-yellow-500 hover:bg-yellow-400 text-[#004d5a] px-8 py-4 font-black uppercase tracking-widest text-sm transition-all flex items-center gap-3">
+                <a href='/contact' className="bg-yellow-500 hover:bg-yellow-400 text-[#004d5a] px-8 py-4 font-black uppercase tracking-widest text-sm transition-all flex items-center gap-3">
                   Book A Visit <ArrowRight size={18} />
-                </button>
-                <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 font-black uppercase tracking-widest text-sm transition-all">
+                </a>
+                {/* <button className="border-2 border-white/30 hover:border-white text-white px-8 py-4 font-black uppercase tracking-widest text-sm transition-all">
                   Gallery
-                </button>
+                </button> */}
               </motion.div>
             </motion.div>
           </AnimatePresence>
